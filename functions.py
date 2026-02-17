@@ -2,16 +2,15 @@ import datetime
 import random
 import re
 
-def get_days_from_today(target_date: str) -> int | None:
-    if not isinstance(target_date, str):
-        return None
-    
+def get_days_from_today(target_date: str) -> int:
     format_date = '%Y-%m-%d'
 
     try:
         target_date = datetime.date.strptime(target_date, format_date)
-    except ValueError:
-        return None
+    except ValueError as e:
+        raise ValueError(
+            f"target_date must be in '{format_date}' format"
+        ) from e
     
     current_date = datetime.date.today()
     return (current_date - target_date).days
