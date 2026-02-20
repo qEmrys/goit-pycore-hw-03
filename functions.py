@@ -19,10 +19,12 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
     if min < 1 or max > 1000:
         return list()
     
-    if not min < quantity < max:
+    max_quantity = max - min
+    
+    if not 0 < quantity <= max_quantity:
         return list()
     
-    numbers = random.sample(range(min, max), quantity)
+    numbers = random.sample(range(min, max + 1), quantity)
     
     return sorted(numbers)
 
