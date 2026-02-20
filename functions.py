@@ -30,7 +30,7 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
 
 def normalize_phone(phone_number: str) -> str:
     parsed_number = ''.join([char for char in phone_number if char.isdigit()])
-    pattern = '38'
+    pattern = r'^38'
     match = re.search(pattern, parsed_number)
 
     if match:
